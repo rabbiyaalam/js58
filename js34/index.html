@@ -1,0 +1,157 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Function Exercises</title>  
+    
+    <script>  
+       
+        function power(a, b) {  
+            return a ** b;  
+        }  
+
+        // 2. Function   
+        function isLeapYear(year) {  
+            return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);  
+        }  
+
+        // 3. Functions 
+        function semiPerimeter(a, b, c) {  
+            return (a + b + c) / 2;  
+        }  
+
+        function areaOfTriangle(a, b, c) {  
+            const S = semiPerimeter(a, b, c);  
+            return Math.sqrt(S * (S - a) * (S - b) * (S - c));  
+        }  
+
+        // 4. Functions 
+        function average(marks) {  
+            const total = marks.reduce((acc, mark) => acc + mark, 0);  
+            return total / marks.length;  
+        }  
+
+        function percentage(marks) {  
+            const total = marks.reduce((acc, mark) => acc + mark, 0);  
+            return (total / (marks.length * 100)) * 100; // Assuming max mark per subject is 100  
+        }  
+
+        function mainFunction(marks) {  
+            const avg = average(marks);  
+            const perc = percentage(marks);  
+            console.log(`Average: ${avg}, Percentage: ${perc}%`);  
+        }  
+
+        // 5.  function  
+        function customIndexOf(str, char) {  
+            for (let i = 0; i < str.length; i++) {  
+                if (str[i] === char) {  
+                    return i;  
+                }  
+            }  
+            return -1; // Character not found  
+        }  
+
+        // 6. Function 
+        function removeVowels(sentence) {  
+            return sentence.replace(/[aeiouAEIOU]/g, '');  
+        }  
+
+        // 7. Function
+        function countDoubleVowels(text) {  
+            let count = 0;  
+            const vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];  
+            for (let i = 0; i < text.length - 1; i++) {  
+                if (vowels.includes(text[i]) && vowels.includes(text[i + 1])) {  
+                    count++;  
+                }  
+            }  
+            return count;  
+        }  
+
+        // 8. Functions   
+        function convertDistance(km) {  
+            const meters = km * 1000;  
+            const feet = km * 3280.84;  
+            const inches = km * 39370.1;  
+            const centimeters = km * 100000;  
+
+            console.log(`Distance: ${km} km is equal to:`);  
+            console.log(`${meters} meters`);  
+            console.log(`${feet} feet`);  
+            console.log(`${inches} inches`);  
+            console.log(`${centimeters} centimeters`);  
+        }  
+
+        // 9. Function 
+        function calculateOvertimePay(hoursWorked) {  
+            const overtimeRate = 12; // Rs. 12 per hour  
+            const regularHours = 40;  
+            let overtimePay = 0;  
+
+            if (hoursWorked > regularHours) {  
+                const overtimeHours = hoursWorked - regularHours;  
+                overtimePay = overtimeHours * overtimeRate;  
+            }  
+            return overtimePay;  
+        }  
+
+        // 10. Function   
+        function calculateCurrencyNotes(amount) {  
+            const notes100 = Math.floor(amount / 100);  
+            amount %= 100;  
+            const notes50 = Math.floor(amount / 50);  
+            amount %= 50;  
+            const notes10 = Math.floor(amount / 10);  
+            return { notes100, notes50, notes10 };  
+        }  
+
+        // Example usage:  
+        window.onload = function() {  
+            // Power function test  
+            console.log("Power 2 raised to 3:", power(2, 3)); // 8  
+
+            // Leap year function test  
+            const year = 2016;  
+            console.log(`${year} is a leap year:`, isLeapYear(year)); // true  
+
+            // Area of triangle test  
+            const a = 3, b = 4, c = 5;  
+            console.log("Area of triangle:", areaOfTriangle(a, b, c)); // 6  
+
+            // Average and percentage of marks  
+            const marks = [85, 90, 78];  
+            mainFunction(marks); // Average and Percentage  
+
+            // Custom indexOf test  
+            console.log("Index of 'a' in 'banana':", customIndexOf('banana', 'a')); // 1  
+
+            // Remove vowels from a sentence  
+            const sentence = "Hello World!";  
+            console.log("Sentence without vowels:", removeVowels(sentence)); // "Hll Wrld!"  
+
+            // Count double vowels in the specified sentence  
+            const text = "Pleases read this application and give me gratuity.";  
+            console.log("Count of double vowels in the sentence:", countDoubleVowels(text)); // Should match ea and ui occurrences  
+
+            // Convert distance  
+            const distanceInKm = 5; // Example distance  
+            convertDistance(distanceInKm); // Convert 5 km  
+
+            // Calculate overtime pay  
+            const hoursWorked = 45; // Example hours worked  
+            console.log(`Overtime pay for ${hoursWorked} hours worked: Rs. ${calculateOvertimePay(hoursWorked)}`);  
+
+            // Calculate currency notes  
+            const withdrawAmount = 370; // Example amount  
+            const currencyNotes = calculateCurrencyNotes(withdrawAmount);  
+            console.log(`Currency notes for Rs. ${withdrawAmount}:`, currencyNotes);  
+        };  
+    </script>  
+</head>  
+<body>  
+    <h1>JavaScript Function </h1>  
+    <p>Open the console to see the results of the function executions!</p>  
+</body>  
+</html>
